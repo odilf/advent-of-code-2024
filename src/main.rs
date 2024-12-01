@@ -1,6 +1,7 @@
 use color_eyre::eyre;
 
 mod solutions;
+mod parse;
 
 pub struct Solutions;
 
