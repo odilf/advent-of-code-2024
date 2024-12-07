@@ -1,5 +1,6 @@
 use nom::{bytes::complete::tag, multi::separated_list1, sequence::separated_pair, Parser as _};
 use pathfinding::prelude::dfs;
+use rayon::prelude::*;
 use std::ops::{Add, Mul};
 
 use crate::parse::digit;
@@ -18,9 +19,9 @@ fn parse_line(line: &str) -> (u64, Vec<u64>) {
     (result, operands)
 }
 
-fn solve(input: &str, operators: Vec<impl Fn(u64, u64) -> u64>) -> u64 {
+fn solve(input: &str, operators: Vec<impl Fn(u64, u64) -> u64 + Sync>) -> u64 {
     input
-        .lines()
+        .par_lines()
         .filter_map(|line| {
             let (result, operands) = parse_line(line);
 
