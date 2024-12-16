@@ -1,5 +1,5 @@
 [package]
-name = "aoc-2023"
+name = "aoc-2024"
 version = "0.1.0"
 edition = "2021"
 
@@ -16,6 +16,7 @@ pathfinding = "4.11.0"
 rayon = "1.10.0"
 regex = "1.11.1"
 tracing-subscriber = "0.3.18"
+winnow = "0.6.20"
 
 [features]
 default = ["all", "both"]
