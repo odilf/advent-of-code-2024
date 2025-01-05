@@ -34,6 +34,8 @@
 
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
+            pkg-config
+            openssl
           ] ++ lib.optionals stdenv.isDarwin [
             # Additional darwin specific inputs can be set here
             # darwin.apple_sdk.frameworks.SystemConfiguration
@@ -44,6 +46,7 @@
           packages = with pkgs; [
             cargo
             rustfmt
+            rust-analyzer
           ];
         };
       }

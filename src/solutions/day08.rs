@@ -39,7 +39,7 @@ fn part1(input: &str) -> usize {
         .into_iter()
         .filter(|&antinode| {
             antinode
-                .zip_map(&bounds, |a, b| a >= 0 && a < b)
+                .zip_map(&bounds, |a, b| a >= 0 && a < b as i32)
                 .iter()
                 .all(|&x| x)
         })
@@ -64,7 +64,7 @@ fn part2(input: &str) -> usize {
 
                 for i in 0.. {
                     let antinode = i * a - (i - 1) * b;
-                    if antinode.x >= bounds.x || antinode.y >= bounds.y {
+                    if antinode.x >= bounds.x as i32 || antinode.y >= bounds.y as i32 {
                         break;
                     }
                     visited.insert(antinode);
